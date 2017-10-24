@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###Family Market App
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Family market app is a web application that allows families to list unused baby/kids items (e.g. car seats, clothig, nursery furniture etc). Families can reserve listed items, use them and them and return back to the original owner when they longer need the items.
