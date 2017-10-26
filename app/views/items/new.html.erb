@@ -1,8 +1,21 @@
-<% form_for @item do |f| %>
-    <%= f.label :item_title %>
-    <%= f.text_field :title %>
-    <%= f.label :item_description %>
-    <%= f.text_area :description %>
+<%= form_for(@item) do |f| %>
 
+    <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.label :item_description %>
+        <%= f.text_area :description %>
+    </div>
+    <br>
+    <div class="field">
+      <% Category.all.each do |category| %>
+        <%= radio_button_tag "item.category.id", category.id %>
+        <%= category.name %>
+      <% end %>
+    </div>
+    <br>
     <%= f.submit %>
 <% end %>

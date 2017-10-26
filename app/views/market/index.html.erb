@@ -12,4 +12,12 @@
     </ul>
 <% end %>
 <br>
+<h2>Listed Items</h2>
+<br>
+<% @items.each do |item| %>
+    <ul>
+    <li><%= item.title %> | <%= item.description %></li>
+    </ul>
+<% end %>
+<br>
 <%= link_to "Add Item",new_item_path %>
