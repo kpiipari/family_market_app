@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+    before_filter :authenticate_user!, :except => [:show, :index]
 
     def show
     end
