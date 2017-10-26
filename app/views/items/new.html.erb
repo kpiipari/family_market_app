@@ -12,7 +12,7 @@
     <br>
     <div class="field">
       <% Category.all.each do |category| %>
-        <%= radio_button_tag "item.category.id", category.id %>
+        <%= radio_button_tag "category.id", category.id %>
         <%= category.name %>
       <% end %>
     </div>
