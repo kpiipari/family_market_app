@@ -16,7 +16,7 @@
 <br>
 <% @items.each do |item| %>
     <ul>
-    <li><%= item.title %> | <%= item.description %></li>
+    <li><%= link_to item.title, item_path(item) %> | <%= item.description %></li>
     </ul>
 <% end %>
 <br>
