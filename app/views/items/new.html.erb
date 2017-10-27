@@ -11,10 +11,7 @@
     </div>
     <br>
     <div class="field">
-      <% Category.all.each do |category| %>
-        <%= radio_button_tag "category.id", category.id %>
-        <%= category.name %>
-      <% end %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name) %>
     </div>
     <br>
     <%= f.submit %>
