@@ -4,5 +4,5 @@ class Item < ApplicationRecord
     has_many :users, through: :item_users
     has_many :item_users
     belongs_to :category
-    accepts_nested_attributes_for :category
+    
 end
