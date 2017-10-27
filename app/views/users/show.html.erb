@@ -1,5 +1,10 @@
 <h1>Welcome <%= @user.email %></h1>
 
+<% @item_users.each do |iu| %>
+    <% item = Item.find(iu.id) %>
+    <h4><%= item.title %></h4>
+    <p><%= item.description %></p>
+<% end %>
 <br>
 <%= link_to "Add Item",new_item_path %>
 <br>
