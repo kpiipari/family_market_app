@@ -3,17 +3,20 @@
 
 <h1>Items I have borrowed</h1>
 
-<% binding.pry %>
-
-<%= list_borrowed_items(@user).each{|i| i.title}  %>
+<% list_borrowed_items(@user).each do |i| %>
+    <%= i.title %>
+<% end %>
 
 <h1>My current free items</h1>
 
-<%= list_user_owned_free_items(@item_users) %>
+<% list_user_owned_free_items(@item_users).each do |i| %>
+    <%= i.title unless i.nil? %>
+<% end %>
 
 <h1>My current reserved items</h1>
 
-<%= list_user_owned_reserved_items(@item_users) %>
-
+<% list_user_owned_reserved_items(@item_users).each do |i| %>
+    <%= i.title unless i.nil? %>
+<% end %>
 
 <%= link_to "Add Item",new_item_path %>

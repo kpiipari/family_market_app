@@ -14,12 +14,12 @@ module UsersHelper
             if item.status == 'reserved'
                 item
             end
+        end
         if reserved_items.nil?
             return
         else
             reserved_items
         end
-      end
     end
 
     def list_user_owned_free_items(item_users)
@@ -28,12 +28,12 @@ module UsersHelper
             if item.status == 'free'
                 item              
             end 
+        end
         if free_items.nil?
             return
         else
             free_items
         end
-      end
     end
 
 end
