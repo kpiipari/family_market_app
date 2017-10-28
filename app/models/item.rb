@@ -5,6 +5,8 @@ class Item < ApplicationRecord
     has_many :item_users
     has_many :reserved_items
     belongs_to :category
+
+    scope :by_status, -> status { where(status: status) }
     
     def reserve
         self.status = "reserved"
@@ -18,5 +20,9 @@ class Item < ApplicationRecord
         user.email 
     end
 
+    def return
+        self.status = "free"
+        self.save
+    end
 
 end

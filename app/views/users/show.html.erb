@@ -1,10 +1,19 @@
 <h1>Welcome <%= @user.email %></h1>
 
-<% @item_users.each do |iu| %>
-    <% item = Item.find(iu.id) %>
-    <h4><%= item.title %></h4>
-    <p><%= item.description %></p>
-<% end %>
-<br>
+
+<h1>Items I have borrowed</h1>
+
+<% binding.pry %>
+
+<%= list_borrowed_items(@user).each{|i| i.title}  %>
+
+<h1>My current free items</h1>
+
+<%= list_user_owned_free_items(@item_users) %>
+
+<h1>My current reserved items</h1>
+
+<%= list_user_owned_reserved_items(@item_users) %>
+
+
 <%= link_to "Add Item",new_item_path %>
-<br>
