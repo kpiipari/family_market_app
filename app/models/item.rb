@@ -3,6 +3,7 @@ class Item < ApplicationRecord
     has_many :tags, through: :item_tags
     has_many :users, through: :item_users
     has_many :item_users
+    has_many :reserved_items
     belongs_to :category
     
     def reserve
@@ -16,4 +17,6 @@ class Item < ApplicationRecord
         user = User.find(item_user.user_id)
         user.email 
     end
+
+
 end

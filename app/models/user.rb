@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :item_users
   has_many :items, through: :item_users
+  has_many :reserved_items
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

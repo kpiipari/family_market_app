@@ -1,0 +1,2 @@
+class ReservedItemController < ApplicationController
+end
