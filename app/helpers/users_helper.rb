@@ -7,28 +7,23 @@ module UsersHelper
         end     
     end
 
-
-    def list_user_owned_reserved_items(item_users)
-        reserved_items = item_users.collect do |iu| 
+    def list_user_owned_items(item_users)
+        item_users.collect do |iu| 
             item = Item.find(iu.id)
-            if item.status == 'reserved'
-                item
-            end
-        end
-        if reserved_items.nil?
-            return
-        else
-            reserved_items
+            item 
         end
     end
+    
 
     def list_user_owned_free_items(item_users)
-        free_items = item_users.collect do |iu| 
+        free_items = []
+        item_users.each do |iu| 
             item = Item.find(iu.id)
             if item.status == 'free'
-                item              
+                free_items << item              
             end 
         end
+
         if free_items.nil?
             return
         else

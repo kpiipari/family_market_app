@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:show]
   resources :item_tags
   resources :items
+  resources :reserved_items
   
   resources :categories do
       resources :items

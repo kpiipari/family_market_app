@@ -1,4 +1,4 @@
-class ReservedItemController < ApplicationController
+class ReservedItemsController < ApplicationController
 
     def new
         @reserved_item = ReservedItem.new
@@ -6,12 +6,14 @@ class ReservedItemController < ApplicationController
 
     def create
         @reserved_item = ReservedItem.create(reserved_item_params)
+        Item.find(@reserved_item.item_id).reserve
+        redirect_to current_user
     end
 
     private
     
     def reserved_item_params
-        params.require(:reserved_item).permit(:used_id, :item_id)
+        params.permit(:user_id, :item_id)
     end
     
 end

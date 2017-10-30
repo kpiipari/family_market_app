@@ -7,16 +7,21 @@
     <%= i.title %>
 <% end %>
 
-<h1>My current free items</h1>
-
-<% list_user_owned_free_items(@item_users).each do |i| %>
-    <%= i.title unless i.nil? %>
+<h1>My items</h1>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+    </tr>   
+<% list_user_owned_items(@item_users).each do |i| %>
+        <tr>
+            <td><%= i.title %></td>
+            <td><%= i.description %></td>
+            <td><%= i.status %></td>
+        </tr> 
 <% end %>
-
-<h1>My current reserved items</h1>
-
-<% list_user_owned_reserved_items(@item_users).each do |i| %>
-    <%= i.title unless i.nil? %>
-<% end %>
-
+</table>
 <%= link_to "Add Item",new_item_path %>
+
+<%= link_to "Back", "/" %>
