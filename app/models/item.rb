@@ -11,7 +11,6 @@ class Item < ApplicationRecord
     def reserve
         self.status = "reserved"
         self.save
-        get_user_email
     end
 
     def get_user_email

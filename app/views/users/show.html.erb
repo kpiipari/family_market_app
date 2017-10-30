@@ -2,10 +2,18 @@
 
 
 <h1>Items I have borrowed</h1>
-
+<table>
+<tr>
+    <th>Title</th>
+    <th>Owner contact</th>
+</tr>
 <% list_borrowed_items(@user).each do |i| %>
-    <%= i.title %>
+    <tr>
+    <td><%= i.title %></td>
+    <td><%= i.get_user_email %></td>
+    </tr>
 <% end %>
+</table>
 
 <h1>My items</h1>
 <table>
@@ -22,6 +30,6 @@
         </tr> 
 <% end %>
 </table>
-<%= link_to "Add Item",new_item_path %>
-
+<%= link_to "Add Item", new_item_path %>
+<br>
 <%= link_to "Back", "/" %>
