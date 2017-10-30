@@ -16,7 +16,11 @@
 <br>
 <% @items.each do |item| %>
     <ul>
-    <li><%= link_to item.title, item_path(item) %> | <%= item.description %>  <%= button_to "Reserve", reserved_items_path, params: {user_id: current_user.id, item_id: item.id}  %></li>
+    <% if item.item_users.find_by(user_id: current_user.id) %>
+        <li><%= link_to item.title, item_path(item) %> | <%= item.description %></li>
+    <% else %>
+        <li><%= link_to item.title, item_path(item) %> | <%= item.description %>  <%= button_to "Reserve", reserved_items_path, params: {user_id: current_user.id, item_id: item.id}  %></li>
+    <% end %>
     </ul>
 <% end %>
 <br>
