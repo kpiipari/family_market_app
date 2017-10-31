@@ -7,6 +7,8 @@ class Item < ApplicationRecord
     belongs_to :category
     accepts_nested_attributes_for :tags
 
+    validates :title, presence: true
+
     scope :by_status, -> status { where(status: status) }
 
     attr_accessor :category_name
