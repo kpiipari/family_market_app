@@ -20,6 +20,11 @@
     </ul>
 <% end %>
 <br>
+<h2>Tags</h2>
+    <% @tags.each do |tag| %>
+        <p><%= tag.name %></p>
+    <% end %>
+    
 <%= link_to "Add Item",new_item_path %>
 <br>
 <%= link_to "User home page", current_user %>

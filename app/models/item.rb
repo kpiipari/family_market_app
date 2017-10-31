@@ -5,6 +5,7 @@ class Item < ApplicationRecord
     has_many :item_users
     has_many :reserved_items
     belongs_to :category
+    accepts_nested_attributes_for :tags
 
     scope :by_status, -> status { where(status: status) }
 
