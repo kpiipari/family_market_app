@@ -10,6 +10,17 @@ class ReservedItemsController < ApplicationController
         redirect_to current_user
     end
 
+    def destroy
+        @item = Item.find(params[:id])
+        @item.return
+        @reserved_item = ReservedItem.find_by(item_id: @item.id)
+        
+        if @reserved_item
+            @reserved_item.destroy
+        end
+        redirect_to current_user
+    end
+
     private
     
     def reserved_item_params
