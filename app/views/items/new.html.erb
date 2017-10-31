@@ -11,7 +11,13 @@
     </div>
     <br>
     <div class="field">
-        <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+        <%= f.label :category %>
+        <%= f.text_field :category_name, list: "categories_autocomplete" %>
+        <datalist id="categories_autocomplete">
+            <% Category.all.each do |category| %>
+                <option value="<%= category.name %>">
+            <% end %>
+        </datalist>
     </div>
     <br>
     <%= f.submit %>

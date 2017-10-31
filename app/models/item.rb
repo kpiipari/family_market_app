@@ -7,7 +7,13 @@ class Item < ApplicationRecord
     belongs_to :category
 
     scope :by_status, -> status { where(status: status) }
-    
+
+    attr_accessor :category_name
+
+    def category_name=(name)
+        self.category = Category.find_or_create_by(name: name)
+    end
+
     def reserve
         self.status = "reserved"
         self.save
@@ -24,4 +30,5 @@ class Item < ApplicationRecord
         self.save
     end
 
+    
 end
