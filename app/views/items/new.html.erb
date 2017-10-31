@@ -2,7 +2,7 @@
 
     <div class="field">
         <%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, required: true %>
     </div>
     <br>
     <div class="field">
@@ -20,7 +20,7 @@
     <br>
     <div class="field">
         <%= f.label :category %>
-        <%= f.text_field :category_name, list: "categories" %>
+        <%= f.text_field :category_name, list: "categories", required: true %>
         <datalist id="categories">
             <% Category.all.each do |category| %>
                 <option value="<%= category.name %>">
