@@ -12,8 +12,22 @@ class ItemsController < ApplicationController
     def create
         @user = current_user
         @item = Item.create(item_params)
+        binding.pry
         @item_user = ItemUser.create(user_id: @user.id, item_id: @item.id)
-        redirect_to '/'
+        redirect_to root_path
+    end
+
+    def edit
+        @item = Item.find(params[:id])
+    end
+
+    def update
+        @item = Item.find(params[:id])
+        if @item.update_attributes(item_params)
+            redirect_to item_path(@item)
+        else 
+            render 'edit'
+        end
     end
 
     private
