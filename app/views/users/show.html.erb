@@ -7,6 +7,7 @@
     <th>Title</th>
     <th>Owner contact</th>
 </tr>
+
 <% list_borrowed_items(@user).each do |i| %>
     <tr>
     <td><%= i.title %></td>
@@ -33,6 +34,7 @@
         </tr> 
 <% end %>
 </table>
+<br>
 <%= link_to "Add Item", new_item_path %>
 <br>
-<%= link_to "Back", "/" %>
+<%= link_to "Back", root_path %>
