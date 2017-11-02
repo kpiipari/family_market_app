@@ -1,6 +1,6 @@
-<h1><%= @category.name.capitalize %></h1>
+<h3><%= @category.name.capitalize %></h3>
 
-<h3>Items in <%= @category.name.capitalize %><h3>
+<h4>Items in <%= @category.name.capitalize %><h4>
 
 <%= render :partial => "items/index", :collection => @items, as: :item %></li> 
 
