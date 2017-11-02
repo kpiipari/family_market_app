@@ -1,41 +1,15 @@
 <h1>Welcome <%= @user.email %></h1>
 
 
-<h1>Items I have borrowed</h1>
-<table>
-<tr>
-    <th>Title</th>
-    <th>Owner contact</th>
-</tr>
+<h2>My borrowed items</h2>
 
-<% list_borrowed_items(@user).each do |i| %>
-    <tr>
-    <td><%= i.title %></td>
-    <td><%= i.get_user_email %></td>
-    <td><%= button_to "Return", {:controller => :reserved_items, :action => 'destroy', :id => i.id}, :method => :delete  %></td>
-    </tr>
-<% end %>
-</table>
+<%= render partial: "user_borrowed", locals: {user: @user} %><br>
 
-<h1>My items</h1>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Borrower</th>
-    </tr>   
-<% list_user_owned_items(@item_users).each do |i| %>
-        <tr>
-            <td><%= i.title %></td>
-            <td><%= i.description %></td>
-            <td><%= i.status %></td>
-            <td><%= get_borrower(i) %></td>
-            <td><%= link_to "Edit Item", edit_item_path %></td>
-        </tr> 
-<% end %>
-</table>
-<br>
+
+<h2>My items</h2>
+
+<%= render partial: "user_owned", locals: {item_users: @item_users} %><br>
+
 <%= link_to "Add Item", new_item_path %>
 <br>
 <%= link_to "Back", root_path %>

@@ -1,0 +1,17 @@
+<table>
+<tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Borrower</th>
+</tr>   
+<% list_user_owned_items(@item_users).each do |i| %>
+    <tr>
+        <td><%= i.title %></td>
+        <td><%= i.description %></td>
+        <td><%= i.status %></td>
+        <td><%= get_borrower(i) %></td>
+        <td><%= link_to "Edit Item", edit_item_path %></td>
+    </tr> 
+<% end %>
+</table>

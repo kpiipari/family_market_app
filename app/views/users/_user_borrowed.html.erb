@@ -1,0 +1,14 @@
+<table>
+<tr>
+    <th>Title</th>
+    <th>Owner contact</th>
+</tr>
+
+<% list_borrowed_items(@user).each do |i| %>
+    <tr>
+    <td><%= i.title %></td>
+    <td><%= i.get_user_email %></td>
+    <td><%= button_to "Return", {:controller => :reserved_items, :action => 'destroy', :id => i.id}, :method => :delete  %></td>
+    </tr>
+<% end %>
+</table>
