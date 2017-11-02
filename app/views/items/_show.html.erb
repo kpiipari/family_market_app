@@ -1,6 +1,7 @@
 <% if item.item_users.find_by(user_id: current_user.id) %>
     <h3><%= @item.title %></h3>
     <p><%= @item.description %></p>
+    <%= link_to "Edit Item", edit_item_path %>
 <% else %>
     <h3><%= @item.title %></h3>
     <p><%= @item.description %></p>
