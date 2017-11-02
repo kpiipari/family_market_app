@@ -1,30 +1,11 @@
 <h1>Welcome to Family Market</h1>
 
 <h2>Categories</h2>
-<br>
-<% @categories.each do |category| %>
-    <ul>
-    <li><%= link_to category.name.capitalize, category_path(category) %></li>
-    </ul>
-<% end %>
-<br>
+<%= render :partial => "categories/index", :collection => @categories, as: :category %></li> 
+
 <h2>Listed Items</h2>
-<br>
-<% @items.each do |item| %>
-    <ul>
-    <% if item.item_users.find_by(user_id: current_user.id) %>
-        <li><%= link_to item.title, item_path(item) %> | <%= item.description %></li>
-    <% else %>
-        <li><%= link_to item.title, item_path(item) %> | <%= item.description %>  <%= button_to "Reserve", reserved_items_path, params: {user_id: current_user.id, item_id: item.id}  %></li>
-    <% end %>
-    </ul>
-<% end %>
-<br>
-<h2>Tags</h2>
-    <% @tags.each do |tag| %>
-        <p><%= tag.name %></p>
-    <% end %>
-    
+<%= render :partial => "items/index", :collection => @items, as: :item %></li> 
+
 <%= link_to "Add Item",new_item_path %>
-<br>
-<%= link_to "User home page", current_user %>
+
+
