@@ -1,11 +1,9 @@
 class Item < ApplicationRecord
-    has_many :item_tags
-    has_many :tags, through: :item_tags
     has_many :users, through: :item_users
     has_many :item_users, dependent: :destroy
     has_many :reserved_items
     belongs_to :category
-    accepts_nested_attributes_for :tags
+ 
 
     validates :title, presence: true
 
