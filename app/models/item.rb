@@ -1,11 +1,12 @@
 class Item < ApplicationRecord
+
     has_many :users, through: :item_users
     has_many :item_users, dependent: :destroy
     has_many :reserved_items
     belongs_to :category
  
 
-    validates :title, presence: true
+    validates :title, :category_name, presence: true
 
     scope :by_status, -> status { where(status: status) }
 
