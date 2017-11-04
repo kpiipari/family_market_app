@@ -1,56 +1,22 @@
-<% if item.errors.any? %>
-<div id="error_explanation">
-    <h2>
-        <%= pluralize(item.errors.count, "error") %>
-        prohibited this post from being saved:
-    </h2>
-
-    <ul>
-    <% item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-     <% end %>
- </ul>
-</div>
-<% end %>  
-
-
-<%= form_for(item) do |f| %>
-      
-        <div class="field<%= ' field_with_errors' if item.errors[:title].any? %>">
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-        </div>
-        <br>
-        <div class="field">
-            <%= f.label :item_description %>
-            <%= f.text_area :description %>
-        </div>
-
-            <%= f.label :category %>
-            <%= f.text_field :category_name, list: "categories" %>
-            <datalist id="categories">
-                <% Category.all.each do |category| %>
-                    <% if category.errors.any? %>
-                    <div id="error_explanation">
-                        <h2>
-                            <%= pluralize(category.errors.count, "error") %>
-                            prohibited this post from being saved:
-                        </h2>
-                    
-                        <ul>
-                        <% category.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
-                         <% end %>
-                     </ul>
-                    </div>
-                    <% end %>
-                    <div class="field<%= ' field_with_errors' if category.errors[:category_name].any? %>">
-                        <option value="<%= category.name %>">
-                    </div>
-                <% end %>
-            </datalist>
-        </div>
-        <br>
-        <%= f.submit %>
-    <% end %>
+ <%= form_for(item) do |f| %>
+ <%= render partial: "item_errors", locals: {item: item} %><br>
+    <div class="field<%= ' field_with_errors' if item.errors[:title].any? %>">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <br>
+    <div class="field">
+        <%= f.label :item_description %>
+        <%= f.text_area :description %>
+    </div>  
+    <%= f.label :category %>
+    <%= f.text_field :category_name, list: "categories", required: true %>
+        <datalist id="categories">
+            <% Category.all.each do |category| %>
+                    <option value="<%= category.name %>">
+            <% end %>
+        </datalist>
+<br>
+<%= f.submit %>
+<% end %>
     

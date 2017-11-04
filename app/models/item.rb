@@ -6,7 +6,7 @@ class Item < ApplicationRecord
     belongs_to :category
  
 
-    validates :title, :category_name, presence: true
+    validates :title, presence: true
 
     scope :by_status, -> status { where(status: status) }
 
