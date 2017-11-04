@@ -61,3 +61,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+
+#Bulma CSS Framework
+gem "bulma-rails", "~> 0.6.0"
