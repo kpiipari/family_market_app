@@ -1,13 +1,9 @@
-<h2>Categories</h2>
-<%= render :partial => "categories/index", :collection => @categories, as: :category %>
-
-<h2>Listed Items</h2>
 <% if @items.empty? %>
     <p>There are no available items.</p>
 <% else %>  
     <%= render :partial => "items/index", :collection => @items, as: :item %>
 <% end %>
 
-<%= link_to "Add Item",new_item_path %>
+
 
 

@@ -26,8 +26,26 @@
       <h1 class="title">Welcome to the Family Market</h1>
     </div>
   </section>
-  <div class="content">
-      <%= yield %>
+
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-parent ">
+      <div class="tile is-child notification is-primary box">
+       <p class="title">Categories</p>
+        <div class="content">
+          <%= render :partial => "categories/index", :collection => @categories, as: :category %>
+        </div>
+      </div>
+      <div class="tile is-child notification is-primary box">
+      <p class="title">Items</p>
+       <div class="content">
+         <%= yield %>
+       </div>
+      </div>
+      <div class="tile is-child notification is-primary box">
+       <div class="content">
+        <%= link_to "Add Item",new_item_path %>
+       </div>
+      </div>
   </div>
-  </body>
+</body>
 </html>
