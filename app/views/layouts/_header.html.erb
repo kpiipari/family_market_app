@@ -1,4 +1,4 @@
-<nav class="">
+
 <% if user_signed_in? %>
     <% if current_page?(root_path) %>
         <p><%= link_to "Signed in as #{current_user.email}", current_user %></p>
@@ -8,5 +8,3 @@
         <p><%= link_to "Sign out #{current_user.email}", destroy_user_session_path, :method => "delete" %></p>
     <% end %>
 <% end %>
-    
-</nav>

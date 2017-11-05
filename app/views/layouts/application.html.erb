@@ -8,14 +8,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
   </head>
   <body>
+  <section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">Family Market</h1>
+    </div>
+    <div class="container">
+      <%= render 'layouts/header' %>
+    </div>
+  </nav>
+  </div>
+  </section>
+  <body>
+  
   <section class="section">
     <div class="container">
-      <h1 class="title">
-        Family Market
-      </h1>
-      <%= render 'layouts/header' %>
-      <%= yield %>
+      <h1 class="title">Welcome to the Family Market</h1>
     </div>
   </section>
+  <div class="content">
+      <%= yield %>
+  </div>
   </body>
 </html>
