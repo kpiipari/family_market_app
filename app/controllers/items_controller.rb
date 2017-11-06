@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     end
     
     def new
-        @item = Item.new
+        @item = Item.new(category_id: params[:category_id])
     end
 
     def create
@@ -51,6 +51,6 @@ class ItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:item).permit(:title, :description, :category_name, tag_ids:[], tags_attributes: [:name])
+        params.require(:item).permit(:title, :description, :category_id, :category_name, tag_ids:[], tags_attributes: [:name])
     end
 end

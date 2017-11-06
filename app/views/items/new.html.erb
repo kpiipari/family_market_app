@@ -3,7 +3,11 @@
   <div class="tile is-child notification is-dark box">
    <p class="title">New item</p>
     <div class="content">
+    <% if params[:category_id].nil? %>
         <%= render partial: "form", locals: {item: @item} %>
+    <% else %>
+        <%= render partial: "nested_form", locals: {item: @item} %>
+    <% end %>
     </div>
   </div>
  </div>

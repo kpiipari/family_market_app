@@ -8,6 +8,7 @@
         <% else %>
             <%= render :partial => "items/index", :collection => @items, as: :item %></li> 
         <% end %>
+        <%= link_to "New Item", new_category_item_path(@category) %>
     </div>
   </div>
  </div>
