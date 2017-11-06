@@ -16,6 +16,13 @@
                     <option value="<%= category.name %>">
             <% end %>
         </datalist><br><br>
+    <div class="field">
+        <%= f.label :tag %>
+        <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+        <%= f.fields_for :tags, @item.tags.build do |tags_fields| %>
+            <%= tags_fields.text_field :name %>
+        <% end %>
+    </div>
     <%= f.submit class: 'button' %>
 <% end %>
     

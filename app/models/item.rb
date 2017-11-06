@@ -3,6 +3,9 @@ class Item < ApplicationRecord
     has_many :users, through: :item_users
     has_many :item_users, dependent: :destroy
     has_many :reserved_items
+    has_many :item_tags
+    has_many :tags, through: :item_tags
+    
     belongs_to :category
  
 
@@ -14,6 +17,17 @@ class Item < ApplicationRecord
 
     def category_name=(name)
         self.category = Category.find_or_create_by(name: name)
+    end
+
+    def tags_attributes=(tag_attributes)
+        tag_attributes.values.each do |tag_attribute|
+          tag = Tag.find_or_create_by(tag_attribute)
+          self.tags << tag
+        end
+      end
+
+    def tag_name=(name)
+        self.tag = Tag.find_or_create_by(name: name)
     end
 
     def reserve
