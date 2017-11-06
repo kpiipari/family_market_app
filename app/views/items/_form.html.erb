@@ -2,7 +2,7 @@
     <%= render partial: "item_errors", locals: {item: item} %><br>
     <div class="field<%= ' field_with_errors' if item.errors[:title].any? %>">
         <%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= f.text_field :title%>
     </div>
     <br>
     <div class="field">
