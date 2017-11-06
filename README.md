@@ -17,4 +17,4 @@ The user can also view all items she has listed herself, including whether they 
 
 ## Technical details
 
-Family Market has been built using Rails 5. It uses Devise and OmniAuth (currently only Facebook) for user registration and authentication. The CSS layout is built using [Bulma](https://bulma.io/)
+Family Market has been built using Rails 5. It uses Devise and OmniAuth (currently only Facebook) for user registration and authentication. The CSS layout is built using [Bulma](https://bulma.io/).
