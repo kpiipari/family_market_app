@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :items
   resources :reserved_items
   
-  resources :categories do
-      resources :items
+  resources :categories, only: [:show, :index] do
+      resources :items, only: [:show, :index, :new]
   end
   
   root 'market#index'

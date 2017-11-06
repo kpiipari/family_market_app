@@ -1,6 +1,15 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!, :except => [:show, :index]
 
+    def index
+        if params[:category_id]
+            @category = Category.find(params[:category_id])
+            @items = @category.items    
+        else
+            @items = Item.all 
+        end
+    end
+
     def show
         @item = Item.find(params[:id])
     end
