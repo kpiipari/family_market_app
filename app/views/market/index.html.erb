@@ -1,9 +1,22 @@
-<% if @items.empty? %>
-    <p>There are no available items.</p>
-<% else %>  
-    <%= render :partial => "items/index", :collection => @items, as: :item %>
-<% end %>
-
-
+<div class="tile is-ancestor">
+<div class="tile is-vertical is-parent ">
+  <div class="tile is-child notification is-primary box">
+   <p class="title">Categories</p>
+    <div class="content">
+      <%= render :partial => "categories/index", :collection => @categories, as: :category %>
+    </div>
+  </div>
+  <div class="tile is-child notification is-primary box">
+  <p class="title">Items</p>
+   <div class="content">
+    <% if @items.empty? %>
+        <p>There are no available items.</p>
+    <% else %>  
+        <%= render :partial => "items/index", :collection => @items, as: :item %>
+        <%= button_to("New Item", new_item_path, :method => :get, :class => "button") %>
+    <% end %>
+   </div>
+  </div>
+</div>
 
 

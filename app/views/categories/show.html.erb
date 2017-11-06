@@ -1,7 +1,10 @@
-<h3><%= @category.name.capitalize %></h3>
-
-<h4>Items in <%= @category.name.capitalize %><h4>
-
-<%= render :partial => "items/index", :collection => @items, as: :item %></li> 
-
-
+<div class="tile is-ancestor">
+<div class="tile is-vertical is-parent ">
+  <div class="tile is-child notification is-primary box">
+   <p class="title"><%= @category.name.capitalize %></p>
+    <div class="content">
+        <%= render :partial => "items/index", :collection => @items, as: :item %></li> 
+    </div>
+  </div>
+ </div>
+</div>

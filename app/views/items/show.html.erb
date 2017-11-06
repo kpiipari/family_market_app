@@ -1,2 +1,10 @@
-<%= render partial: "show", locals: {item: @item} %><br>
-<%= link_to "Back", root_path %>
+<div class="tile is-ancestor">
+<div class="tile is-vertical is-parent ">
+  <div class="tile is-child notification is-primary box">
+    <div class="content">
+    <%= render partial: "show", locals: {item: @item} %><br>
+    <%= link_to "Back", root_path %> 
+    </div>
+  </div>
+ </div>
+</div>

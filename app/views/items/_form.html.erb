@@ -1,5 +1,5 @@
  <%= form_for(item) do |f| %>
- <%= render partial: "item_errors", locals: {item: item} %><br>
+    <%= render partial: "item_errors", locals: {item: item} %><br>
     <div class="field<%= ' field_with_errors' if item.errors[:title].any? %>">
         <%= f.label :title %>
         <%= f.text_field :title %>
@@ -15,8 +15,7 @@
             <% Category.all.each do |category| %>
                     <option value="<%= category.name %>">
             <% end %>
-        </datalist>
-<br>
-<%= f.submit %>
+        </datalist><br><br>
+    <%= f.submit class: 'button' %>
 <% end %>
     
