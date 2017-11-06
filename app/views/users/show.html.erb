@@ -1,15 +1,24 @@
-<h1>Welcome <%= @user.email %></h1>
+<div class="tile is-ancestor">
+<div class="tile is-vertical is-parent ">
+  <div class="tile is-child notification is-dark box">
+   <p class="title">Items I have borrowed</p>
+    <div class="content">
+    <%= render partial: "user_borrowed", locals: {user: @user} %>
+    </div>
+  </div>
+  <div class="tile is-child notification is-dark box">
+  <p class="title">My items</p>
+   <div class="content">
+    <% if @user.items.empty? %>
+        <p>You have not listed any items</p>
+    <% else %>  
+        <%= render partial: "user_owned", locals: {item_users: @item_users} %>
+        <%= button_to("New Item", new_item_path, :method => :get, :class => "button") %>
+    <% end %>
+   </div>
+  </div>
+</div>
 
 
-<h2>My borrowed items</h2>
-
-<%= render partial: "user_borrowed", locals: {user: @user} %><br>
 
 
-<h2>My items</h2>
-
-<%= render partial: "user_owned", locals: {item_users: @item_users} %><br>
-
-<%= link_to "Add Item", new_item_path %>
-<br>
-<%= link_to "Back", root_path %>
