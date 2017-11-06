@@ -1,3 +1,11 @@
-<h1>Edit item</h1>
-<%= render partial: "form", locals: {item: @item} %>
-<%= button_to "Delete", @item, method: :delete, data: { confirm: "Really delete this item?"} %>
+<div class="tile is-ancestor">
+<div class="tile is-vertical is-parent ">
+  <div class="tile is-child notification is-primary box">
+   <p class="title">Edit item</p>
+    <div class="content">
+        <%= render partial: "form", locals: {item: @item} %><br>
+        <%= button_to "Delete", @item, method: :delete, data: { confirm: "Really delete this item?"}, :class => "button" %>
+    </div>
+  </div>
+ </div>
+</div>
