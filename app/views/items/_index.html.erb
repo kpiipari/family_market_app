@@ -1,8 +1,19 @@
 <ul>
 <% if item.item_users.find_by(user_id: current_user.id) %>
-    <li><%= link_to item.title, item_path(item) %> | <%= item.description %></li>
+    <li><%= link_to item.title, item_path(item) %></li> 
+    <p><%= item.description %></p>
+    <p>Category: <%= link_to item.category.name, category_items_path(item.category) %></p>
+    <% item.tags.each do |tag| %>
+        <p>Tags: <%= tag.name %></p>
+    <% end %>
 <% else %>
-    <li><%= link_to item.title, item_path(item) %> | <%= item.description %>  <%= button_to "Reserve", reserved_items_path, params: {user_id: current_user.id, item_id: item.id}, :class => "button is-small" %></li>
+    <li><%= link_to item.title, item_path(item) %></li>
+    <p><%= item.description %></p>
+    <p>Category: <%= link_to item.category.name, category_items_path(item.category) %></p>
+    <% item.tags.each do |tag| %>
+        <p>Tags: <%= tag.name %></p>
+    <% end %>
+    <%= button_to "Reserve", reserved_items_path, params: {user_id: current_user.id, item_id: item.id}, :class => "button is-small" %></li>
 <% end %>
 </ul>
 

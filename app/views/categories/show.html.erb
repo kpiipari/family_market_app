@@ -6,7 +6,7 @@
         <% if @category.items.empty? %>
             <p>There are no available items.</p>
         <% else %>
-        <%= render :partial => "items/index", :collection => @items, as: :item %></li> 
+            <%= render :partial => "items/index", :collection => @items, as: :item %></li> 
         <% end %>
     </div>
   </div>
