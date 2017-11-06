@@ -1,0 +1,5 @@
+<% if !item.tags.empty? %>
+    <% item.tags.each do |tag| %>
+        <p>Tags: <%= tag.name %></p>
+    <% end %>
+<% end %>

@@ -1,0 +1,10 @@
+<div class="tile is-ancestor">
+<div class="tile is-vertical is-parent">
+  <div class="tile is-child notification is-dark box">
+   <p class="title">Categories</p>
+    <div class="content">
+      <%= render :partial => "categories/index", :collection => @categories, as: :category %>
+    </div>
+  </div>
+  </div>
+</div>
