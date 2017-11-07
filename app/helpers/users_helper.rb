@@ -9,7 +9,7 @@ module UsersHelper
 
     def list_user_owned_items(item_users)
         item_users.collect do |iu| 
-            item = Item.find(iu.id)
+            item = Item.find(iu.item_id)
             item 
         end
     end
