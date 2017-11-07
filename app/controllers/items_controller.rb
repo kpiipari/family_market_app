@@ -4,9 +4,9 @@ class ItemsController < ApplicationController
     def index
         if params[:category_id]
             @category = Category.find(params[:category_id])
-            @items = @category.items    
+            @items = @category.items.by_status('free')    
         else
-            @items = Item.all 
+            @items = Item.by_status('free') 
         end
     end
 

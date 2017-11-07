@@ -26,10 +26,6 @@ class Item < ApplicationRecord
         end
       end
 
-    def tag_name=(name)
-        self.tag = Tag.find_or_create_by(name: name)
-    end
-
     def reserve
         self.status = "reserved"
         self.save
