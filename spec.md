@@ -13,8 +13,8 @@ Specs:
 - [x] Include login (uses Devise)
 - [x] Include logout (uses Devise)
 - [x] Include third party signup/login (uses OmniAuth(Facebook))
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+- [X] Include nested resource show or index (URL e.g. users/2/recipes)
+- [X] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
