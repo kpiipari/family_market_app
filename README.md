@@ -27,4 +27,4 @@ To suggest a feature or to report a bug fix, please file [a new issue](https://g
 
 ## Licensing
 
-This project has been licensed under the MIT open source license.
+This project has been [licensed](https://github.com/kpiipari/family_market_app/blob/master/LICENSE) under the MIT open source license.
