@@ -12,9 +12,19 @@ The user can also view all items she has listed herself, including whether they 
 
 ## Install
 
-1. Clone [this repository](https://github.com/kpiipari/family_market_app)
+1. Fork and clone [this repository](https://github.com/kpiipari/family_market_app)
 2. Run `bundle install`
+3. Run `rake db:migrate` and `rake db:seed`
 
 ## Technical details
 
 Family Market has been built using Rails 5. It uses Devise and OmniAuth (currently only Facebook) for user registration and authentication. The CSS layout is built using [Bulma](https://bulma.io/).
+
+## Contributors guide
+
+To contribute to this project, make a pull request.
+To suggest a feature or to report a bug fix, please file [a new issue](https://github.com/kpiipari/family_market_app/issues/new).
+
+## Licensing
+
+This project has been licensed under the MIT open source license.
