@@ -66,3 +66,6 @@ gem 'dotenv-rails'
 
 #Bulma CSS Framework
 gem "bulma-rails", "~> 0.6.0"
+
+# Serialize resources to JSON
+gem 'active_model_serializers'
