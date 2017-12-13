@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
         else
             @items = Item.by_status('free') 
         end
+        respond_to do |format|
+            format.html { render :show }
+            format.json { render json: @items }
+        end
     end
 
     def show
