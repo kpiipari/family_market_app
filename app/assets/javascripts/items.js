@@ -14,8 +14,10 @@ $(function() {
         var posting = $.post(action, params);
         
         posting.done(function(data) {
-            debugger;
-            console.log(data)
+            var item = new Item(data)
+            var itemLi = item.buildItemLi();
+            $("ul.market").append(itemLi);
+            console.log(item)
         })
     })
 })
