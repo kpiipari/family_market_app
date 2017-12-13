@@ -9,7 +9,13 @@ $(function() {
     $("form#new_item").on("submit", function(e){
         e.preventDefault();
         var $form = $(this);
+        var action = $form.attr("action")
         var params = $form.serialize();
-        debugger
+        var posting = $.post(action, params);
+        
+        posting.done(function(data) {
+            debugger;
+            console.log(data)
+        })
     })
 })
