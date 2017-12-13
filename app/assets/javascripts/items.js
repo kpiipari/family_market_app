@@ -8,6 +8,8 @@ function Item(item) {
 $(function() {
     $("form#new_item").on("submit", function(e){
         e.preventDefault();
-        console.log("Stop")
+        var $form = $(this);
+        var params = $form.serialize();
+        debugger
     })
 })
