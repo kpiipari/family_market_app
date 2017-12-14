@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
         end
         respond_to do |format|
             format.html { render :show }
-            format.json { render json: @items }
+            format.json { render json: @items, each_serializer: ItemSerializer }
         end
     end
 
