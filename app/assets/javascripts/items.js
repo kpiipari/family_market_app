@@ -12,9 +12,9 @@ Item.prototype.showIndexItem = function() {
     return `
     <div class="content">
         <h3><a href="/items/${this.id}">${this.title}</a></h3>
-        <p><${this.description}/p><br>
+        <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p><br>
-        <button class="reserve-button" id="${this.id}">Reserve</button>
+        <button class="reserve-button" id="${this.id}" onclick="Item.reserveItem(this)">Reserve</button>
     </div>
     ` 
 }
@@ -31,9 +31,8 @@ Item.fail = function(response) {
     alert("There was a problem submitting the form. Please try again.")
 }
 
-Item.reserveItem = function(e){
-    e.preventDefault();
-    var item = $(this);
+Item.reserveItem = function(item){
+    console.log(item)
     debugger
     $.post("/reserved_items", )
    
@@ -57,6 +56,5 @@ Item.newItemFormSubmit = function(e){
 
 
 $(function() {
-    $(".reserve-button").click(Item.reserveItem)
     $("form#new_item").on("submit", Item.newItemFormSubmit)
 })
