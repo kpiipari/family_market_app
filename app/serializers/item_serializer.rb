@@ -3,4 +3,5 @@ class ItemSerializer < ActiveModel::Serializer
   belongs_to :category, serializer: CategorySerializer
   belongs_to :user, serializer: UserSerializer
   has_many :tags
+  has_many :item_users
 end
