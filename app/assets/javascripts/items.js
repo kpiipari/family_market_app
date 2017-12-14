@@ -4,12 +4,17 @@ function Item(item) {
     this.description = item.description;
     this.category_id = item.category.id;
     this.category_name = item.category.name;
-    this.item_users = [];
-    this.tags = [];
-
+    this.item_users = item.item_users;
+    this.tags = item.tags;
+    
+    this.item_use
 }
 
 //Prototypes
+
+var getItems = function() {
+    $.get("/items.json").done(Item.done)
+}
 
 Item.prototype.showIndexItem = function() {
     return `
@@ -17,7 +22,6 @@ Item.prototype.showIndexItem = function() {
         <h3><a href="/items/${this.id}">${this.title}</a></h3>
         <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p><br>
-        <p>Tags: ${this.tags}</p></br>
         <button class="reserve-button" id="${this.id}" onclick="Item.reserveItem(this)">Reserve</button>
     </div>
     ` 
@@ -25,9 +29,11 @@ Item.prototype.showIndexItem = function() {
 
 
 Item.done = function(response){
-    var item = new Item(response)
-    var indexItem = item.showIndexItem();
-    $("#main").append(indexItem);
+    $.each(response, function(index, value) {
+        var item = new Item(response[index])
+        var indexItem = item.showIndexItem();
+        $("#main").append(indexItem);    
+    }) 
 }
 
 Item.fail = function(response) {
@@ -60,5 +66,6 @@ Item.newItemFormSubmit = function(e){
 
 
 $(function() {
+    getItems();
     $("form#new_item").on("submit", Item.newItemFormSubmit)
 })
