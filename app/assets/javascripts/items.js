@@ -2,8 +2,11 @@ function Item(item) {
     this.id = item.id
     this.title = item.title;
     this.description = item.description;
-    this.category_id = item.category_id;
-    this.category_name = item.category_name;
+    this.category_id = item.category.id;
+    this.category_name = item.category.name;
+    this.item_users = [];
+    this.tags = [];
+
 }
 
 //Prototypes
@@ -14,6 +17,7 @@ Item.prototype.showIndexItem = function() {
         <h3><a href="/items/${this.id}">${this.title}</a></h3>
         <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p><br>
+        <p>Tags: ${this.tags}</p></br>
         <button class="reserve-button" id="${this.id}" onclick="Item.reserveItem(this)">Reserve</button>
     </div>
     ` 
