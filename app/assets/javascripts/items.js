@@ -2,14 +2,28 @@ function Item(item) {
     this.id = item.id
     this.title = item.title;
     this.description = item.description;
-    this.category_id = item.category_id
+    this.category_id = item.category_id;
+    this.category_name = item.category_name;
 }
+
+//Prototypes
+
+Item.prototype.showIndexItem = function() {
+    return `
+    <div class="content">
+        <h3><a href="/items/${this.id}">${this.title}</a></h3>
+        <p><${this.description}/p><br>
+        <p>Category: ${this.category_name}</p><br>
+        <button class="button" id="${this.id}">Reserve</button>
+    </div>
+    ` 
+}
+
 
 Item.done = function(response){
     var item = new Item(response)
-    var itemLi = item.buildItemLi();
-    $("ul.market").append(itemLi);
-    console.log(item)
+    var indexItem = item.showIndexItem();
+    $("#main").append(indexItem);
 }
 
 Item.fail = function(response) {
@@ -18,11 +32,6 @@ Item.fail = function(response) {
 }
 
 
-
-Item.prototype.buildItemLi = function() {
-
-}
-
 Item.newItemFormSubmit = function(e){
     e.preventDefault();
     var $form = $(this);
@@ -30,13 +39,9 @@ Item.newItemFormSubmit = function(e){
     var params = $form.serialize();
     var posting = $.post(action, params);
     
-    posting.done(function(data) {
-        var item = new Item(data)
-        var itemLi = item.buildItemLi();
-        $("ul.market").append(itemLi);
-        console.log(item)
-    })
+    posting.then(Item.done, Item.fail)
 }
+
 
 $(function() {
     $("form#new_item").on("submit", Item.newItemFormSubmit)
