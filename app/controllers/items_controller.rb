@@ -2,16 +2,11 @@ class ItemsController < ApplicationController
     before_action :authenticate_user!, :except => [:show, :index]
 
     def index
-        if params[:category_id]
-            @category = Category.find(params[:category_id])
-            @items = @category.items.by_status('free')    
-        else
-            @items = Item.by_status('free') 
-        end
+        @items = Item.by_status('free') 
         respond_to do |format|
             format.html { render :show }
             format.json { render json: @items, each_serializer: ItemSerializer }
-        end
+        end 
     end
 
     def show
