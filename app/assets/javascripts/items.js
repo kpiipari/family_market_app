@@ -22,7 +22,7 @@ Item.prototype.showIndexItem = function() {
         <h3><a href="/items/${this.id}">${this.title}</a></h3>
         <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p><br>
-        <button class="reserve-button" id="${this.id}" onclick="Item.reserveItem(this)">Reserve</button>
+        <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
     </div>
     ` 
 }
