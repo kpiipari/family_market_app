@@ -3,6 +3,7 @@
   <div class="tile is-child notification is-warning box">
     <div class="content">
     <%= render partial: "show", locals: {item: @item} %><br>
+    <a href="#" class="js-next" data-id="<%=@item.id %>">Next...</a><br>
     <%= link_to "Back", root_path %> 
     </div>
   </div>

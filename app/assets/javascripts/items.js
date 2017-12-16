@@ -17,9 +17,12 @@ var getItems = function() {
 }
 
 var getItemForShow = function() {
-    
-    $.get("/items" + id + ".json").done(Item.show)
+    $(".js-next").on("click", function() {
+        var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+        $.get("/items" + nextId + ".json").done(Item.show)
+    })
 }
+    
 
 Item.prototype.showIndexItem = function() {
     return `
@@ -29,6 +32,20 @@ Item.prototype.showIndexItem = function() {
             <p>${this.description}</p><br>
             <p>Category: ${this.category_name}</p><br>
             <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
+        </div>
+    </div>
+    ` 
+}
+
+Item.prototype.itemShowPage = function() {
+    return `
+    <div class="content">
+        <div class="tile is-child notification is-dark box">
+            <h3>${this.title}</h3>
+            <p>${this.description}</p><br>
+            <p>Category: ${this.category_name}</p><br>
+            <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
+            <button class="js-next" data-id="${this.id}">Next...</button>
         </div>
     </div>
     ` 
@@ -81,5 +98,6 @@ Item.newItemFormSubmit = function(e){
 
 $(function() {
     getItems();
+    getItemForShow();
     $("form#new_item").on("submit", Item.newItemFormSubmit)
 })
