@@ -19,10 +19,12 @@ var getItems = function() {
 Item.prototype.showIndexItem = function() {
     return `
     <div class="content">
-        <h3><a href="/items/${this.id}">${this.title}</a></h3>
-        <p>${this.description}</p><br>
-        <p>Category: ${this.category_name}</p><br>
-        <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
+        <div class="tile is-child notification is-dark box">
+            <h3><a class="button is-white" href="/items/${this.id}">${this.title}</a></h3>
+            <p>${this.description}</p><br>
+            <p>Category: ${this.category_name}</p><br>
+            <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
+        </div>
     </div>
     ` 
 }
