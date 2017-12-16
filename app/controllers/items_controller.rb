@@ -4,16 +4,16 @@ class ItemsController < ApplicationController
     def index
         @items = Item.by_status('free') 
         respond_to do |format|
-            format.html { render :show }
             format.json { render json: @items, each_serializer: ItemSerializer }
+            format.html 
         end 
     end
 
     def show
         @item = Item.find(params[:id])
         respond_to do |format|
-            format.html { render :show }
             format.json { render json: @item }
+            format.html { render :show }
         end
     end
     
