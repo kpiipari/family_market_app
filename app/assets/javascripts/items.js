@@ -46,14 +46,12 @@ Item.fail = function(response) {
 Item.reserveItem = function(item){
     console.log(item)
     debugger
-    $.post("/reserved_items", )
-   
-    var $form = $(this);
-    var action = $form.attr("action")
-    var params = $form.serialize();
-    var posting = $.post(action, params);
-    
-    posting.then(Item.done, Item.fail)
+    $.post("/reserved_items", item, function(item) {
+        var itemId = item.dataset.item_id;
+        var userId = item.dataset.user_id
+        console.log(data)
+        debugger
+    })
 }
 
 Item.newItemFormSubmit = function(e){
