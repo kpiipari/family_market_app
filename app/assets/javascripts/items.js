@@ -48,6 +48,15 @@ Item.fail = function(response) {
     alert("There was a problem submitting the form. Please try again.")
 }
 
+Item.show = function(response){
+    debugger
+    $.each(response, function(index, value) {
+        var item = new Item(response[index])
+        var indexItem = item.itemShowPage();
+        $("#main").append(indexItem);    
+    }) 
+}
+
 Item.reserveItem = function(item){
     console.log(item)
     debugger
