@@ -6,7 +6,6 @@ function Item(item) {
     this.category_name = item.category.name;
     this.item_users = item.item_users;
     this.tags = item.tags;
-    
     this.item_use
 }
 
@@ -16,12 +15,11 @@ var getItems = function() {
     $.get("/items.json").done(Item.done)
 }
 
-var getItemForShow = function(id) {
-    $.get("/items" + id + ".json").done(Item.show)
-}
+
 
 Item.prototype.showIndexItem = function() {
-    return `
+    return 
+    `
     <div class="content">
         <div class="tile is-child notification is-dark box">
             <h3><a class="button is-white" href="/items/${this.id}">${this.title}</a></h3>
@@ -30,7 +28,21 @@ Item.prototype.showIndexItem = function() {
             <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
         </div>
     </div>
-    ` 
+    `
+}
+
+//Item show page
+
+var getItemForShow = function(id) {
+    $.get("/items" + id + ".json").done(Item.show)
+}
+
+Item.show = function(response){
+    $.each(response, function(index, value) {
+        var item = new Item(response[index])
+        var indexItem = item.itemShowPage();
+        $("#main").append(indexItem);    
+    }) 
 }
 
 Item.prototype.itemShowPage = function() {
@@ -64,7 +76,7 @@ Item.fail = function(response) {
 Item.reserveItem = function(item){
     console.log(item)
     debugger
-    $.post("/reserved_items", item, function(item) {
+    $.post("/reserved_items", function(item){
         var itemId = item.dataset.item_id;
         var userId = item.dataset.user_id
         console.log(data)
@@ -81,6 +93,8 @@ Item.newItemFormSubmit = function(e){
     
     posting.then(Item.done, Item.fail)
 }
+
+
 
 
 $(function() {
