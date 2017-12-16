@@ -16,6 +16,10 @@ var getItems = function() {
     $.get("/items.json").done(Item.done)
 }
 
+var getItemForShow = function(id) {
+    $.get("/items" + id + ".json").done(Item.show)
+}
+
 Item.prototype.showIndexItem = function() {
     return `
     <div class="content">
@@ -24,6 +28,20 @@ Item.prototype.showIndexItem = function() {
             <p>${this.description}</p><br>
             <p>Category: ${this.category_name}</p><br>
             <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
+        </div>
+    </div>
+    ` 
+}
+
+Item.prototype.itemShowPage = function() {
+    return `
+    <div class="content">
+        <div class="tile is-child notification is-dark box">
+            <h3>${this.title}</h3>
+            <p>${this.description}</p><br>
+            <p>Category: ${this.category_name}</p><br>
+            <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
+            <a class="button is-white" href="/items/${this.id}">Next...</a>
         </div>
     </div>
     ` 
