@@ -36,14 +36,11 @@ Item.prototype.showIndexItem = function() {
 }
 
 Item.prototype.itemShowPage = function() {
-    return `
-    <div class="tile is-child notification is-dark box">
-            <h3>${this.title}</h3>
-            <p>${this.description}</p><br>
-            <p>Category: ${this.category_name}</p><br>
-            <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
-            <button class="js-next" data-id="${this.id}">Next...</button>
-    </div>
+    return 
+    `
+        $(".itemTitle").text(${item.title});
+        $(".itemDescription").text(${item.description});
+        $(".itemTag").text(${item.tags});
     ` 
 }
 
@@ -63,9 +60,11 @@ Item.fail = function(response) {
 
 Item.show = function(response){
     var item = new Item(response)
+    $(".itemTitle").text(item.title);
+    $(".itemDescription").text(item.description);
+    $(".itemTag").text(item.tags);
+    $(".js-next").attr("data-id", item.id);
     var showItem = item.itemShowPage();
-    debugger
-    $("#main").html(showItem);
 }
 
 Item.reserveItem = function(item){
