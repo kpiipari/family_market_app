@@ -4,7 +4,7 @@
     <div class="content">
     <%= render partial: "show", locals: {item: @item} %><br>
     
-    <a href="#" class="js-next" data-id="<%=@item.id %>" onclick="getItemForShow(<%=@item.id %>)">Next...</a><br>
+    <a href="#" class="js-next" data-id="<%=@item.id %>" onclick="getNextItemForShow(<%=@item.id %>)">Next...</a><br>
     <%= link_to "Back", root_path %> 
     </div>
   </div>
