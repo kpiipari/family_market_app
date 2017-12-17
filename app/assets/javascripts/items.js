@@ -21,7 +21,7 @@ var getNextItemForShow = function(id) {
     $.get("/items/" + nextId + ".json", function(data) {
         $(".itemTitle").text(data.title);
         $(".itemDescription").text(data.description);
-        $(".js-next").attr("data-id", data.id);
+        $(".js-next").data("id", data.id);
     })
 }
     
