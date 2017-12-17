@@ -7,7 +7,7 @@
     <% end %>
     <%= link_to "Edit Item", edit_item_path %>
 <% else %>
-    <h3 class="itemTitle><%= @item.title %></h3>
+    <h3 class="itemTitle"><%= @item.title %></h3>
     <p class="itemDescription"><%= @item.description %></p>
     <% @item.tags.each do |tag| %>
         <p class="itemTag"><%= tag.name %></p>

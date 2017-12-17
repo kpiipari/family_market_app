@@ -18,7 +18,11 @@ var getItems = function() {
 
 var getNextItemForShow = function(id) {
     var nextId = id + 1;
-    $.get("/items/" + nextId + ".json").done(Item.show)
+    $.get("/items/" + nextId + ".json", function(data) {
+        $(".itemTitle").text(data.title);
+        $(".itemDescription").text(data.description);
+        $(".js-next").attr("data-id", data.id);
+    })
 }
     
 
@@ -64,7 +68,7 @@ Item.show = function(response){
     $(".itemDescription").text(item.description);
     $(".itemTag").text(item.tags);
     $(".js-next").attr("data-id", item.id);
-    var showItem = item.itemShowPage();
+    debugger
 }
 
 Item.reserveItem = function(item){
