@@ -15,6 +15,15 @@ var getItems = function() {
     $.get("/items.json").done(Item.done)
 }
 
+var getNextItemForShow = function(id) {
+    var nextId = id + 1;
+    $.get("/items/" + nextId + ".json", function(data) {
+        $(".itemTitle").text(data.title);
+        $(".itemDescription").text(data.description);
+        $(".js-next").data("id", data.id);
+    })
+}
+
 
 
 Item.prototype.showIndexItem = function() {
