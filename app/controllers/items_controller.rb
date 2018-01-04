@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
     def index
         @items = Item.by_status('free') 
+        @item = Item.new
         respond_to do |format|
             format.json { render json: @items, each_serializer: ItemSerializer }
             format.html 

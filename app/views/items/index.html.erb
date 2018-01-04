@@ -1,8 +1,16 @@
 <div class="tile is-ancestor">
 <div class="tile is-vertical is-parent">
   <div class="tile is-child notification is-dark box">
+    <p class="title">Add item</p>
+    <%= render partial: "form", locals: {item: @item} %>
+  </div>
+</div>
+</div>
+<div class="tile is-ancestor">
+<div class="tile is-vertical is-parent">
+  <div class="tile is-child notification is-dark box">
   <% if @category.nil? %>
-    <p class="title">Items</p>
+    <p class="title">Items</p><br>
   <% else %>
     <p class="title">Items in <%= @category.name.capitalize %></p>
  <% end %>

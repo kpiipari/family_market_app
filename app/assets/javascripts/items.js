@@ -24,8 +24,6 @@ var getNextItemForShow = function(id) {
     })
 }
 
-
-
 Item.prototype.showIndexItem = function() {
     return `
     <div class="content">
@@ -38,35 +36,6 @@ Item.prototype.showIndexItem = function() {
     </div>
     ` 
 }
-
-//Item show page
-
-var getItemForShow = function(id) {
-    $.get("/items" + id + ".json").done(Item.show)
-}
-
-Item.show = function(response){
-    $.each(response, function(index, value) {
-        var item = new Item(response[index])
-        var indexItem = item.itemShowPage();
-        $("#main").append(indexItem);    
-    }) 
-}
-
-Item.prototype.itemShowPage = function() {
-    return `
-    <div class="content">
-        <div class="tile is-child notification is-dark box">
-            <h3>${this.title}</h3>
-            <p>${this.description}</p><br>
-            <p>Category: ${this.category_name}</p><br>
-            <button class="reserve-button" id="${this.id}" data-item_id="${this.id}" data-user_id="${this.item_users[0].user_id}" onclick="Item.reserveItem(this)">Reserve</button>
-            <a class="button is-white" href="/items/${this.id}">Next...</a>
-        </div>
-    </div>
-    ` 
-}
-
 
 Item.done = function(response){
     $.each(response, function(index, value) {
@@ -101,9 +70,6 @@ Item.newItemFormSubmit = function(e){
     
     posting.then(Item.done, Item.fail)
 }
-
-
-
 
 $(function() {
     getItems();
