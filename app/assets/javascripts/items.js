@@ -68,7 +68,12 @@ Item.newItemFormSubmit = function(e){
     var params = $form.serialize();
     var posting = $.post(action, params);
     
-    posting.then(Item.done, Item.fail)
+    posting.done(function(data) {
+        var item = new Item(data)
+        var indexItem = item.showIndexItem();
+        $("#main").append(indexItem); 
+        //$("#new_item_form").reset();
+    })
 }
 
 $(function() {
