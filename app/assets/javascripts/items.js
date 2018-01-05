@@ -71,7 +71,7 @@ Item.newItemFormSubmit = function(e){
         var item = new Item(data)
         var indexItem = item.showIndexItem();
         $("#main").append(indexItem); 
-        //$("#new_item_form").reset();
+        document.getElementById("new_item").reset();    
     })
 }
 
