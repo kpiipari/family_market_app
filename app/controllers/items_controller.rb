@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-    before_action :authenticate_user!, :except => [:show, :index]
+    before_action :authenticate_user!, :except => [:show, :index, :create]
 
     def index
         @items = Item.by_status('free') 
