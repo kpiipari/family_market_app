@@ -75,7 +75,47 @@ Item.newItemFormSubmit = function(e){
     })
 }
 
+function Category(category) {
+    this.id = category.id
+    this.name = category.name;
+    this.items = category.items;
+}
+
+//Prototypes
+
+var getCategories = function() {
+    $.get("/categories.json").done(Category.done)
+}
+
+var getCategoryItem = function() {
+    $("a").click(function() {
+        alert("category clicked")
+        debugger
+    });
+}
+
+Category.done = function(response){
+    debugger
+    $.each(response, function(index, value) {
+        var category = new Category(response[index])
+        var indexCategory = category.showIndexCategory();
+        $("#main").append(indexCategory);    
+    }) 
+}
+
+Category.prototype.showIndexCategory = function() {
+    return `
+    <div class="content">
+        <div class="tile is-child notification is-dark box">
+            <h3><a href="/categories/${this.id}" class="button" is-primary data-id="${this.id}")">${this.name}</a></h3>
+        </div>
+    </div>
+    ` 
+}
+
 $(function() {
     getItems();
     $("form#new_item").on("submit", Item.newItemFormSubmit)
+    getCategories();
+    getCategoryItem();
 })
