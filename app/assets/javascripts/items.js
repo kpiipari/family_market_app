@@ -84,7 +84,10 @@ function Category(category) {
 //Prototypes
 
 var getCategories = function() {
-    $.get("/categories.json").done(Category.done)
+    $("#js-show-category").click(function() {
+        debugger
+        $.get("/categories.json").done(Category.done)
+    });
 }
 
 var getCategoryItem = function() {
@@ -95,11 +98,10 @@ var getCategoryItem = function() {
 }
 
 Category.done = function(response){
-    debugger
     $.each(response, function(index, value) {
         var category = new Category(response[index])
         var indexCategory = category.showIndexCategory();
-        $("#main").append(indexCategory);    
+        $("#js-category").append(indexCategory);    
     }) 
 }
 
@@ -115,7 +117,7 @@ Category.prototype.showIndexCategory = function() {
 
 $(function() {
     getItems();
-    $("form#new_item").on("submit", Item.newItemFormSubmit)
     getCategories();
+    $("form#new_item").on("submit", Item.newItemFormSubmit);
     getCategoryItem();
 })
