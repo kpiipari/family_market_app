@@ -108,9 +108,7 @@ Category.done = function(response){
 Category.prototype.showIndexCategory = function() {
     return `
     <div class="content">
-        <div class="tile is-child notification is-dark box">
-            <h3><a href="/categories/${this.id}" class="button" is-primary data-id="${this.id}")">${this.name}</a></h3>
-        </div>
+            <p><a href="/categories/${this.id}" is-primary data-id="${this.id}")">${this.name}</a></p>
     </div>
     ` 
 }
