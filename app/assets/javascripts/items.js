@@ -81,8 +81,18 @@ function Category(category) {
 
 var getCategories = function() {
     $("#js-show-category").click(function() {
-        debugger
-        $.get("/categories.json").done(Category.done)
+        if ($("#js-category").children().length == 0) {
+            $.get("/categories.json").done(Category.done)
+        } else {
+            $("#js-category").show() 
+        }
+        
+    });
+}
+
+var hideCategories = function() {
+    $("#js-hide-category").click(function() {
+        $("#js-category").hide()
     });
 }
 
@@ -103,15 +113,14 @@ Category.done = function(response){
 
 Category.prototype.showIndexCategory = function() {
     return `
-    <div class="content">
             <p><a href="/categories/${this.id}" is-primary data-id="${this.id}")">${this.name}</a></p>
-    </div>
     ` 
 }
 
 $(function() {
     getItems();
     getCategories();
+    hideCategories();
     $("form#new_item").on("submit", Item.newItemFormSubmit);
     getCategoryItem();
 })
