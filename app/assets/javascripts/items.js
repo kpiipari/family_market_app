@@ -26,13 +26,9 @@ var getNextItemForShow = function(id) {
 
 Item.prototype.showIndexItem = function() {
     return `
-    <div class="content">
-        <div class="tile is-child notification is-dark box">
-            <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}")">${this.title}</a></h3>
-            <p>${this.description}</p><br>
-            <p>Category: ${this.category_name}</p><br>
-        </div>
-    </div>
+        <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}")">${this.title}</a></h3>
+        <p>${this.description}</p><br>
+        <p>Category: ${this.category_name}</p><br>
     ` 
 }
 
@@ -40,7 +36,7 @@ Item.done = function(response){
     $.each(response, function(index, value) {
         var item = new Item(response[index])
         var indexItem = item.showIndexItem();
-        $("#main").append(indexItem);    
+        $("#js-items").append(indexItem);    
     }) 
 }
 
@@ -70,7 +66,7 @@ Item.newItemFormSubmit = function(e){
     posting.done(function(data) {
         var item = new Item(data)
         var indexItem = item.showIndexItem();
-        $("#main").append(indexItem); 
+        $("#js-new-item").append(indexItem); 
         document.getElementById("new_item").reset();    
     })
 }
