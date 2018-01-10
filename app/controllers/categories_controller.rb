@@ -11,5 +11,9 @@ class CategoriesController < ApplicationController
     def show
         @category = Category.find(params[:id])
         @items = @category.items
+        respond_to do |format|
+            format.json { render json: @items }
+            format.html { render :show }
+        end
     end
 end
