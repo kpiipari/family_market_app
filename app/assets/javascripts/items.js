@@ -96,11 +96,18 @@ var hideCategories = function() {
     });
 }
 
-var getCategoryItem = function() {
-    $("a").click(function() {
-        alert("category clicked")
-        debugger
-    });
+var getCategoryItem = function(id) {
+    $.get("/categories/" + id + ".json").done(Category.itemDone)
+}
+
+Category.itemDone = function(response){
+    $.each(response, function(index, value) {
+        var item = new Item(response[index]);
+        var itemTitle = item.showIndexItem();
+        var id = item.category_id;
+        $(".js-category-item").append(itemTitle);   
+        debugger 
+    }) 
 }
 
 Category.done = function(response){
