@@ -10,4 +10,6 @@
         <p><%= link_to "My account", current_user %></p>
         <p><%= link_to "Sign out #{current_user.email}", destroy_user_session_path, :method => "delete" %></p>
     <% end %>
+<% else %>
+    <p><%= link_to "Sign in", new_user_session_path %></p>
 <% end %>
