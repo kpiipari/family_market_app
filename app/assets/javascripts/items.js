@@ -105,8 +105,7 @@ Category.itemDone = function(response){
         var item = new Item(response[index]);
         var itemTitle = item.showIndexItem();
         var id = item.category_id;
-        $(".js-category-item").append(itemTitle);   
-        debugger 
+        document.getElementById(id).insertAdjacentHTML('beforeend',itemTitle);   
     }) 
 }
 
@@ -121,7 +120,7 @@ Category.done = function(response){
 Category.prototype.showIndexCategory = function() {
     return `
             <p><a href="#" class="js-category-name" is-primary data-id="${this.id}")" onclick="getCategoryItem(${this.id})">${this.name}</a></p>
-            <div class="js-category-item"></div>
+            <div id="${this.id}"></div>
     ` 
 }
 
@@ -130,5 +129,5 @@ $(function() {
     getCategories();
     hideCategories();
     $("form#new_item").on("submit", Item.newItemFormSubmit);
-    getCategoryItem();
+    
 })
