@@ -39,7 +39,7 @@ Item.prototype.showIndexItem = function() {
         <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p>
         <p>Tags:</p>
-        <p>${showTags(this.tags)}</p>
+        <p>${showTags(this.tags)}</p><br>
     ` 
 }
 
