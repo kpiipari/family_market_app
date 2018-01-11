@@ -8,6 +8,7 @@
 <% else %>
     <h3 class="itemTitle"><%= @item.title %></h3>
     <p class="itemDescription"><%= @item.description %></p>
+    <p class="itemTag"></p>
     <% @item.tags.each do |tag| %>
         <p class="itemTag"><%= tag.name %></p>
     <% end %>
