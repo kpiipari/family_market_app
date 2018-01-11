@@ -4,8 +4,11 @@
     <p class="title">Categories</p> 
       <p class="subtitle" id="js-show-category">Show</p>
       <p class="subtitle" id="js-hide-category">Hide</p>
-      <div class="content" id="js-category">
-      </div>   
+      <div data-turbolinks="false" id="js-category">
+      </div> 
+      <div data-turbolinks="false" id="js-category-item">
+      </div> 
+        
     <p class="title">Add item</p>
     <%= render partial: "form", locals: {item: @item} %><br>
     <p class="title">Items</p><br>
