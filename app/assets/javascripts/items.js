@@ -24,11 +24,28 @@ var getNextItemForShow = function(id) {
     })
 }
 
+var showTags = function(tags) {
+    let tagsString = ""
+    for (let tag of tags) {
+        tagsString += tag.name + "<br>"
+    }
+    return tagsString
+}
+
+
 Item.prototype.showIndexItem = function() {
     return `
         <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}")">${this.title}</a></h3>
         <p>${this.description}</p><br>
-        <p>Category: ${this.category_name}</p><br>
+        <p>Category: ${this.category_name}</p>
+        <p>Tags:</p>
+        <p>${showTags(this.tags)}</p>
+    ` 
+}
+
+Item.prototype.showItemTitle = function() {
+    return `
+        <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}")">${this.title}</a></h3>
     ` 
 }
 
@@ -103,7 +120,7 @@ var getCategoryItem = function(id) {
 Category.itemDone = function(response){
     $.each(response, function(index, value) {
         var item = new Item(response[index]);
-        var itemTitle = item.showIndexItem();
+        var itemTitle = item.showItemTitle();
         var id = item.category_id;
         document.getElementById(id).insertAdjacentHTML('beforeend',itemTitle);   
     }) 
