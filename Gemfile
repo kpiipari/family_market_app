@@ -67,3 +67,6 @@ gem 'active_model_serializers'
 
 # Adds JQuery
 gem 'jquery-rails'
+
+# Adds gon to get Rails variables to js
+gem 'gon'
