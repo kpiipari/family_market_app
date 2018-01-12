@@ -11,7 +11,6 @@
   <% if user_signed_in? %>   
     <p class="title">Add item</p>
     <%= render partial: "form", locals: {item: @item} %><br>
-  <% end %>
     <p class="title">Items</p><br>
     <div id="js-new-item"></div>
     <div id="js-items"></div>
