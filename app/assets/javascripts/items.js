@@ -6,7 +6,6 @@ function Item(item) {
     this.category_name = item.category.name;
     this.item_users = item.item_users;
     this.tags = item.tags;
-    this.item_use
 }
 
 //Prototypes
@@ -36,11 +35,12 @@ var showTags = function(tags) {
 
 Item.prototype.showIndexItem = function() {
     return `
-        <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}")">${this.title}</a></h3>
+        <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}">${this.title}</a></h3>
         <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p>
         <p>Tags:</p>
-        <p>${showTags(this.tags)}</p><br>
+        <p>${showTags(this.tags)}</p>
+        <h3><a href="#" class="button" is-primary data-id="${this.id}" onclick="reserveItem(${this.id})">Reserve</a></h3>
     ` 
 }
 
@@ -54,7 +54,7 @@ Item.done = function(response){
     $.each(response, function(index, value) {
         var item = new Item(response[index])
         var indexItem = item.showIndexItem();
-        $("#js-items").append(indexItem);    
+        $("#js-items").append(indexItem);   
     }) 
 }
 
@@ -63,7 +63,7 @@ Item.fail = function(response) {
     alert("There was a problem submitting the form. Please try again.")
 }
 
-Item.reserveItem = function(item){
+ var reserveItem = function(item){
     console.log(item)
     debugger
     $.post("/reserved_items", function(item){
