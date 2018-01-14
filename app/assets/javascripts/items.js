@@ -64,15 +64,21 @@ Item.fail = function(response) {
 }
 
  var reserveItem = function(item){
-    console.log(item)
-    let userId = $("#js-items").data('user')
-    let itemId = item
-    debugger
-    $.post("/reserved_items", function(item){
-        var itemId = item.dataset.item_id;
-        var userId = item.dataset.user_id
-        console.log(data)
-        debugger
+    var userId = $("#js-items").data('user')
+    var reservedItem = {"user_id":"userId", "item_id":"item"};
+    var token = $("meta[name=csrf-token]").attr("content");
+    var data = {"authenticity_token":token, "item_id":"item", "user_id":"userId"}
+    var dataJSON = JSON.stringify(data)
+    $.ajax({
+        type: 'POST',
+        url: '/reserved_items', 
+        data: dataJSON,
+        success: function() {
+            alert("success")
+        },
+        error: function() {
+            alert("error")
+        }
     })
 }
 

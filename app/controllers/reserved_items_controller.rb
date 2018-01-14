@@ -1,15 +1,17 @@
 class ReservedItemsController < ApplicationController
 
+
     def new
         @reserved_item = ReservedItem.new
     end
 
     def create
+        binding.pry
         @reserved_item = ReservedItem.create(reserved_item_params)
         Item.find(@reserved_item.item_id).reserve
         respond_to do |format|
-            format.html { redirect_to current_user }
             format.json { render json: @item, status: 201 }
+            format.html { redirect_to current_user }
         end
     end
 
