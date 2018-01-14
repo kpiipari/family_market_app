@@ -65,6 +65,8 @@ Item.fail = function(response) {
 
  var reserveItem = function(item){
     console.log(item)
+    let userId = $("#js-items").data('user')
+    let itemId = item
     debugger
     $.post("/reserved_items", function(item){
         var itemId = item.dataset.item_id;
