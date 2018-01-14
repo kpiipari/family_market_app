@@ -39,8 +39,7 @@ Item.prototype.showIndexItem = function() {
         <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p>
         <p>Tags:</p>
-        <p>${showTags(this.tags)}</p>
-        <h3><a href="#" class="button" is-primary data-id="${this.id}" onclick="reserveItem(${this.id})">Reserve</a></h3>
+        <p>${showTags(this.tags)}</p><br>
     ` 
 }
 
