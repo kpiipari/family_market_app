@@ -6,7 +6,6 @@ class ReservedItemsController < ApplicationController
     end
 
     def create
-        binding.pry
         @reserved_item = ReservedItem.create(reserved_item_params)
         Item.find(@reserved_item.item_id).reserve
         respond_to do |format|
