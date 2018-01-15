@@ -3,13 +3,17 @@
         <p><%= link_to "Signed in as #{current_user.email}", current_user %></p>
         <p><%= link_to "Sign out", destroy_user_session_path, :method => "delete" %></p>
     <% elsif current_page?(current_user) %>
-        <p><%= link_to "Family Market Home", root_path %></p>
+        <p><a href="#" onclick="reloadHome()">Family Market Home</a></p>
         <p><%= link_to "Sign out", destroy_user_session_path, :method => "delete" %></p>
     <% else %>
-        <p><%= link_to "Family Market Home", root_path %></p>
+        <p><a href="#" onclick="reloadHome()">Family Market Home</a></p>
         <p><%= link_to "My account", current_user %></p>
         <p><%= link_to "Sign out #{current_user.email}", destroy_user_session_path, :method => "delete" %></p>
     <% end %>
 <% else %>
     <p><%= link_to "Sign in", new_user_session_path %></p>
 <% end %>
+
+
+
+

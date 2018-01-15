@@ -151,10 +151,13 @@ Category.prototype.showIndexCategory = function() {
     ` 
 }
 
+var reloadHome = function() {
+    location.replace("/");
+}
+
 $(function() {
     getItems();
     getCategories();
     hideCategories();
     $("form#new_item").on("submit", Item.newItemFormSubmit);
-    
 })
