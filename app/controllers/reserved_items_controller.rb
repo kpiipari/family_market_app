@@ -1,5 +1,5 @@
 class ReservedItemsController < ApplicationController
-
+    skip_before_action :verify_authenticity_token
 
     def new
         @reserved_item = ReservedItem.new
@@ -10,7 +10,7 @@ class ReservedItemsController < ApplicationController
         Item.find(@reserved_item.item_id).reserve
         respond_to do |format|
             format.json { render json: @item, status: 201 }
-            format.html { redirect_to current_user }
+            format.html { redirect_to root_path }
         end
     end
 
