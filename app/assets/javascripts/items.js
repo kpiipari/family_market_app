@@ -67,12 +67,13 @@ Item.fail = function(response) {
     var userId = $("#js-items").data('user')
     var reservedItem = {"user_id":"userId", "item_id":"item"};
     var token = $("meta[name=csrf-token]").attr("content");
-    var data = {"authenticity_token":token, "item_id":"item", "user_id":"userId"}
-    var dataJSON = JSON.stringify(data)
+    var item = item
+    var data = {authenticity_token:token, item_id:item, user_id:userId}
+    var json = JSON.stringify(data)
     $.ajax({
         type: 'POST',
         url: '/reserved_items', 
-        data: dataJSON,
+        data: data,
         success: function() {
             alert("success")
         },
