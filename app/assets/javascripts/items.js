@@ -33,6 +33,12 @@ var showTags = function(tags) {
     return tagsString
 }
 
+var reserveButton = function(id) {
+    return `
+    <a href="#" class="button is-small" is-primary data-id="${id}" onclick="reserveItem(${id})">Reserve</a>
+    `
+}
+
 
 Item.prototype.showIndexItem = function() {
     return `
