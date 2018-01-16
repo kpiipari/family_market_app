@@ -21,6 +21,7 @@ var getNextItemForShow = function(id) {
         $(".itemDescription").text(data.description);
         $(".itemTag").html(showTags(data.tags));
         $(".js-next").data("id", data.id);
+        $(".itemReserve").replaceWith(reserveButton(data.id))
     })
 }
 
