@@ -9,5 +9,5 @@ class UsersController < ApplicationController
                 format.json { render json: @item_users }
             end
         end
-    end
+end
     
