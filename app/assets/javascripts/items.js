@@ -101,7 +101,8 @@ Item.newItemFormSubmit = function(e){
         var item = new Item(data)
         var indexItem = item.showIndexItem();
         $("#js-new-item").append(indexItem); 
-        document.getElementById("new_item").reset();    
+        document.getElementById("new_item").reset(); 
+        $("input[type=submit]").removeAttr('disabled');;  
     })
 }
 
