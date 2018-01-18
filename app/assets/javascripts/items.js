@@ -17,11 +17,19 @@ var getItems = function() {
 var getNextItemForShow = function(id) {
     var nextId = id + 1;
     $.get("/items/" + nextId + ".json", function(data) {
-        $(".itemTitle").text(data.title);
-        $(".itemDescription").text(data.description);
-        $(".itemTag").html(showTags(data.tags));
-        $(".js-next").data("id", data.id);
-        $(".itemReserve").replaceWith(reserveButton(data.id))
+        if(data.status === "free") {
+            $(".itemTitle").text(data.title);
+            $(".itemDescription").text(data.description);
+            $(".itemTag").html(showTags(data.tags));
+            $(".js-next").data("id", data.id);
+            $(".itemReserve").html(reserveButton(data.id))
+        } else {
+            $(".itemTitle").text(data.title);
+            $(".itemDescription").text(data.description);
+            $(".itemTag").html(showTags(data.tags));
+            $(".js-next").data("id", data.id);
+            $(".itemReserve").html(reservedButton(data.id))
+        }    
     })
 }
 
@@ -35,10 +43,15 @@ var showTags = function(tags) {
 
 var reserveButton = function(id) {
     return `
-    <a href="#" class="button is-small" is-primary data-id="${id}" onclick="reserveItem(${id})">Reserve</a>
+    <span href="#" class="button is-small" is-primary data-item_id="${id}" onclick="reserveItem(${id})">Reserve</span>
     `
 }
 
+var reservedButton = function(id) {
+    return `
+    <span href="#" class="button is-small" is-primary data-item_id="${id}" onclick="reserveItem(${id})">Reserved</span>
+    `
+}
 
 Item.prototype.showIndexItem = function() {
     return `
@@ -63,7 +76,7 @@ Item.done = function(response){
     $.each(response, function(index, value) {
         var item = new Item(response[index])
         var indexItem = item.showIndexItem();
-        $("#js-items").append(indexItem);   
+        $("#js-index-items").append(indexItem);   
     }) 
 }
 
