@@ -11,10 +11,10 @@
     </div>
   </div>
 </section>
+<% if user_signed_in? %>  
 <section class="hero is-info">
   <div class="hero-body">
     <div class="container">
-  <% if user_signed_in? %>   
     <h1 class="title is-2">Add item</h1>
     <div data-turbolinks="false">
       <%= render partial: "form", locals: {item: @item} %><br>
