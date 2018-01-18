@@ -42,18 +42,20 @@ var reserveButton = function(id) {
 
 Item.prototype.showIndexItem = function() {
     return `
-        <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}">${this.title}</a></h3>
+        <p class="subtitle"><a href="/items/${this.id}" data-id="${this.id}">${this.title}</a></p>
         <p>${this.description}</p><br>
         <p>Category: ${this.category_name}</p>
         <p>Tags:</p>
         <p>${showTags(this.tags)}</p>
         <h3><span href="#" class="button" is-primary data-item_id="${this.id}" onclick="reserveItem(${this.id})">Reserve</span></h3>
-    ` 
+        <hr>
+        ` 
 }
 
 Item.prototype.showItemTitle = function() {
     return `
-        <h3><a href="/items/${this.id}" class="button" is-primary data-id="${this.id}")">${this.title}</a></h3>
+        <p class="subtitle"><a href="/items/${this.id}" data-id="${this.id}">${this.title}</a></p>
+        <hr>
     ` 
 }
 
@@ -71,6 +73,7 @@ Item.fail = function(response) {
 }
 
  var reserveItem = function(item){
+
     var userId = $("#js-items").data('user')
     var reservedItem = {"user_id":"userId", "item_id":"item"};
     var token = $("meta[name=csrf-token]").attr("content");
@@ -154,7 +157,7 @@ Category.done = function(response){
 
 Category.prototype.showIndexCategory = function() {
     return `
-            <p><a href="#" class="js-category-name" is-primary data-id="${this.id}")" onclick="getCategoryItem(${this.id})">${this.name}</a></p>
+            <p class="title"><span href="#" class="js-category-name" is-primary data-id="${this.id}")" onclick="getCategoryItem(${this.id})">${this.name}</span></p>
             <div id="${this.id}"></div>
     ` 
 }
