@@ -157,7 +157,7 @@ Category.done = function(response){
 
 Category.prototype.showIndexCategory = function() {
     return `
-            <p class="title"><span href="#" class="js-category-name" is-primary data-id="${this.id}")" onclick="getCategoryItem(${this.id})">${this.name}</span></p>
+            <p class="title"><span href="#" class="js-category-name" is-primary data-id="${this.id}")" onclick="getCategoryItem(${this.id}); this.onclick=null;">${this.name}</span></p>
             <div id="${this.id}"></div>
     ` 
 }
