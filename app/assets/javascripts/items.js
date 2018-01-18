@@ -49,7 +49,7 @@ var reserveButton = function(id) {
 
 var reservedButton = function(id) {
     return `
-    <span href="#" class="button is-small" is-primary data-item_id="${id}" onclick="reserveItem(${id})">Reserved</span>
+    <span href="#" class="button is-small" is-primary data-item_id="${id}">Reserved</span>
     `
 }
 
