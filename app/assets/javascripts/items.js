@@ -47,7 +47,7 @@ Item.prototype.showIndexItem = function() {
         <p>Category: ${this.category_name}</p>
         <p>Tags:</p>
         <p>${showTags(this.tags)}</p>
-        <h3><a href="#" class="button" is-primary data-item_id="${this.id}" onclick="reserveItem(${this.id})">Reserve</a></h3>
+        <h3><span href="#" class="button" is-primary data-item_id="${this.id}" onclick="reserveItem(${this.id})">Reserve</span></h3>
     ` 
 }
 
@@ -83,7 +83,6 @@ Item.fail = function(response) {
         data: data,
         success: function() {
             $('[data-item_id="' + item + '"]').text("Reserved")
-            alert("Item reserved.")
         },
         error: function() {
             alert("Unable to reserve the item.")
