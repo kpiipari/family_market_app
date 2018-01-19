@@ -86,35 +86,37 @@ Item.fail = function(response) {
 }
 
  var reserveItem = function(item){
-
     var userId = $("#js-items").data('user')
     var reservedItem = {"user_id":"userId", "item_id":"item"};
     var token = $("meta[name=csrf-token]").attr("content");
     var item = item
     var data = {authenticity_token:token, item_id:item, user_id:userId}
     var json = JSON.stringify(data)
-    $.ajax({
-        type: 'POST',
-        url: '/reserved_items', 
-        data: data,
-        success: function() {
-            $('[data-item_id="' + item + '"]').text("Reserved")
-        },
-        error: function() {
-            alert("Unable to reserve the item.")
-        }
-    })
+    if($('[data-item_id="' + item + '"]').attr("disabled") != "disabled") {
+        $.ajax({
+            type: 'POST',
+            url: '/reserved_items', 
+            data: data,
+            success: function() {
+                $('[data-item_id="' + item + '"]').attr("disabled", true);
+                $('[data-item_id="' + item + '"]').text("Reserved");
+            },
+            error: function() {
+                alert("Unable to reserve the item.");
+            }
+        }) 
+    }
 }
 
 Item.newItemFormSubmit = function(e){
     e.preventDefault();
     var $form = $(this);
-    var action = $form.attr("action")
+    var action = $form.attr("action");
     var params = $form.serialize();
     var posting = $.post(action, params);
     
     posting.done(function(data) {
-        var item = new Item(data)
+        var item = new Item(data);
         var indexItem = item.showIndexItem();
         $("#js-new-item").append(indexItem); 
         document.getElementById("new_item").reset(); 
