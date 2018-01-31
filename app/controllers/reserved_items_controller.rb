@@ -1,4 +1,5 @@
 class ReservedItemsController < ApplicationController
+    skip_before_action :verify_authenticity_token
 
     def new
         @reserved_item = ReservedItem.new
@@ -7,7 +8,10 @@ class ReservedItemsController < ApplicationController
     def create
         @reserved_item = ReservedItem.create(reserved_item_params)
         Item.find(@reserved_item.item_id).reserve
-        redirect_to current_user
+        respond_to do |format|
+            format.json { render json: @item, status: 201 }
+            format.html { redirect_to root_path }
+        end
     end
 
     def destroy

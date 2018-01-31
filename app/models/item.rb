@@ -24,7 +24,7 @@ class Item < ApplicationRecord
           tag = Tag.find_or_create_by(tag_attribute)
           self.tags << tag
         end
-      end
+    end
 
     def reserve
         self.status = "reserved"

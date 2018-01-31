@@ -1,8 +1,10 @@
 <div class="tile is-ancestor">
 <div class="tile is-vertical is-parent ">
   <div class="tile is-child notification is-warning box">
-    <div class="content">
-    <%= render partial: "show", locals: {item: @item} %><br>
+    <div class="content" data-turbolinks="false">
+    <%= render partial: "show", locals: {item: @item} %>
+    <div id="js-items" data-user=<%= current_user.id %>></div>
+    <a href="#" class="js-next" data-id="<%=@item.id %>" onclick="getNextItemForShow($(this).data('id'))">Next...</a><br>
     <%= link_to "Back", root_path %> 
     </div>
   </div>

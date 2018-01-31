@@ -1,18 +1,40 @@
-<div class="tile is-ancestor">
-<div class="tile is-vertical is-parent">
-  <div class="tile is-child notification is-dark box">
-  <% if @category.nil? %>
-    <p class="title">Items</p>
-  <% else %>
-    <p class="title">Items in <%= @category.name.capitalize %></p>
- <% end %>
-   <div class="content">
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+    <h1 class="title is-2">Categories</h1> 
+      <h1 class="title is-4" id="js-show-category">Show</h1>
+      <h1 class="title is-4" id="js-hide-category">Hide</h1>
+      <div data-turbolinks="false" id="js-category">
+      </div> 
+      <div data-turbolinks="false" id="js-category-item">
+      </div> 
+    </div>
+  </div>
+</section>
+<% if user_signed_in? %>  
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+    <h1 class="title is-2">Add item</h1>
+    <div data-turbolinks="false">
+      <%= render partial: "form", locals: {item: @item} %><br>
+    </div>
+    </div>
+  </div>
+</section>
+<section class="hero is-dark is-bold">
+  <div class="hero-body">
+    <div class="container">
+    <h1 class="title is-2">Items</h1>
+    <div id="js-new-item"></div>
+    <div id="js-index-items"></div>
+    <div id="js-items" data-user=<%= current_user.id %>></div>
     <% if @items.empty? %>
         <p>There are no available items.</p>
-    <% else %>  
-        <%= render :partial => "items/index", :collection => @items, as: :item %>
-        <%= button_to("New Item", new_item_path, :method => :get, :class => "button") %>
     <% end %>
-   </div>
+  <% end %>
+    </div>
   </div>
-</div>
+</section>
+ 
+

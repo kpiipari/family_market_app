@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       resources :items, only: [:show, :index, :new]
   end
   
-  root 'market#index'
+  root 'items#index'
 
 end
